@@ -2,6 +2,17 @@ import { useEffect, useRef, useState } from "react";
 import leaflet from "leaflet";
 import 'leaflet/dist/leaflet.css';
 
+let DefaultIcon = leaflet.icon({
+   iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
+   shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
+   iconSize: [25, 41],
+   iconAnchor: [12, 41],
+   popupAnchor: [1, -34],
+   shadowSize: [41, 41]
+});
+
+leaflet.Marker.prototype.options.icon = DefaultIcon;
+
 export default function Map() {
    const mapRef = useRef<HTMLDivElement>(null);
    const mapInstanceRef = useRef<leaflet.Map | null>(null);
